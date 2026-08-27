@@ -1,0 +1,21 @@
+{
+  "name": "pagani-claude-code",
+  "version": "0.1.0",
+  "description": "Setup pessoal do Pagani para Claude Code: comandos e agentes para a stack React + Vite + TypeScript + Tailwind + Supabase + Vercel.",
+  "author": {
+    "name": "Pagani",
+    "url": "https://github.com/ghpagani"
+  },
+  "homepage": "https://github.com/ghpagani/pagani-claude-code",
+  "repository": "https://github.com/ghpagani/pagani-claude-code",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "vite",
+    "typescript",
+    "tailwind",
+    "supabase",
+    "vercel",
+    "productivity"
+  ]
+}

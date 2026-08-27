@@ -1,0 +1,24 @@
+{
+  "name": "pagani-claude-code",
+  "owner": {
+    "name": "Pagani",
+    "url": "https://github.com/ghpagani"
+  },
+  "metadata": {
+    "description": "Marketplace pessoal do Pagani — plugin de produtividade para a stack React + Vite + Supabase.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "pagani-claude-code",
+      "source": "./",
+      "description": "Comandos e agentes para React + Vite + TypeScript + Tailwind + Supabase + Vercel.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Pagani",
+        "url": "https://github.com/ghpagani"
+      },
+      "keywords": ["react", "vite", "typescript", "tailwind", "supabase", "vercel"]
+    }
+  ]
+}
