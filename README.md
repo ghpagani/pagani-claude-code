@@ -40,7 +40,9 @@ Os agentes ativam por contexto ou por invocação explícita (`@agent-<nome>`).
 
 ## MCP servers
 
-Definidos em `.mcp.json`: `context7` (docs de libs), `playwright` (browser), `supabase` (read-only). O Supabase exige duas variáveis de ambiente — ver [`docs/MCP-SERVERS.md`](docs/MCP-SERVERS.md).
+Definidos em `.mcp.json`: `context7` (docs de libs) e `playwright` (browser). Sem configuração.
+
+Para acesso ao Supabase, use a conexão Supabase da sua conta Claude (já integrada). Se preferir um servidor Supabase local dedicado por projeto, veja [`docs/MCP-SERVERS.md`](docs/MCP-SERVERS.md).
 
 ## Premissas da stack
 

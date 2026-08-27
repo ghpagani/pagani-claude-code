@@ -2,26 +2,36 @@
 
 Definidos em `.mcp.json` na raiz do plugin. Sobem junto com o plugin; reinicie o Claude Code após instalar.
 
+Por padrão o plugin traz só `context7` e `playwright`. Para Supabase, o recomendado é usar a **conexão Supabase da conta Claude** (já integrada, sem token pra gerenciar). O bloco `supabase` abaixo é opcional — adicione ao `.mcp.json` só se quiser um servidor local dedicado.
+
 ## context7 — `@upstash/context7-mcp`
 Documentação atualizada e versionada de bibliotecas. Uso: mencione "use context7" no prompt, ou deixe os agentes chamarem. Sem config.
 
 ## playwright — `@playwright/mcp`
 Automação de browser (navegar, screenshot, testar fluxos, ler console/rede). Sem config. Primeira execução baixa o browser.
 
-## supabase — `@supabase/mcp-server-supabase`
-Acesso ao schema/logs/advisors do Supabase, em **modo read-only** (`--read-only`).
+## supabase (opcional) — `@supabase/mcp-server-supabase`
+Acesso ao schema/logs/advisors do Supabase, em **modo read-only**. Só use se NÃO estiver usando a conexão Supabase da conta Claude.
+
+Bloco para colar em `.mcp.json` → `mcpServers`:
+
+```json
+"supabase": {
+  "command": "npx",
+  "args": ["-y", "@supabase/mcp-server-supabase", "--read-only", "--project-ref=${SUPABASE_PROJECT_REF}"],
+  "env": { "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}" }
+}
+```
 
 Precisa de duas variáveis de ambiente na sua máquina (não no repo):
 
-```bash
-# ~/.bashrc, ~/.zshrc, ou variáveis de ambiente do Windows
-export SUPABASE_ACCESS_TOKEN="sbp_..."      # Account → Access Tokens no painel Supabase
-export SUPABASE_PROJECT_REF="xxxxxxxxxxxx"  # ref do projeto (Project Settings → General)
+```powershell
+# Windows PowerShell (permanente, para o usuário)
+[Environment]::SetEnvironmentVariable("SUPABASE_ACCESS_TOKEN", "sbp_...", "User")   # Account → Access Tokens no painel Supabase
+[Environment]::SetEnvironmentVariable("SUPABASE_PROJECT_REF", "xxxxxxxxxxxx", "User") # ref do projeto (Project Settings → General)
 ```
 
-Como o projeto Supabase costuma ser **compartilhado** entre apps, aponte `SUPABASE_PROJECT_REF` para o projeto que hospeda o app atual e trate as tabelas por prefixo.
-
-Se preferir o MCP do Supabase hospedado (conectado pela sua conta Claude) em vez deste local, remova o bloco `supabase` do `.mcp.json` para não ter dois.
+`SUPABASE_PROJECT_REF` aponta para um projeto de cada vez — troque ao mudar de app. Reinicie o Claude Code para as variáveis entrarem.
 
 ## Adicionando outros MCP servers
 
